@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foglalj Okosan — Kulcsrakész foglalási rendszer szalonoknak</title>
-<meta name="description" content="Beállítjuk és üzemeltetjük helyetted a teljes foglalási rendszert: online időpontfoglalás, emlékeztető SMS-ek és automatikus Google-értékelés kérés. Több vendég, kevesebb üres szék.">
+<title>Foglalás Okosan — Kulcsrakész időpontfoglaló rendszer magánrendelőknek</title>
+<meta name="description" content="Kulcsrakész online időpontfoglaló rendszer magánrendelőknek: online foglalás 0-24, emlékeztető SMS-ek és GDPR-konform, biztonságos adatkezelés — beállítással és üzemeltetéssel együtt. Kevesebb meg nem jelenő páciens, kevesebb adminisztráció.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,11 +93,16 @@
   .ps-top{background:var(--blush);padding:1.1rem 1.1rem .85rem;text-align:center;border-bottom:1px solid var(--blush-deep)}
   .ps-top .salon{font-family:'Fraunces';font-weight:600;font-size:1rem}
   .ps-top .small{font-size:.7rem;color:var(--ink-soft);letter-spacing:.1em;margin-top:.18rem}
-  .ps-body{padding:1rem .9rem;display:flex;flex-direction:column;gap:.7rem;flex:1;overflow:hidden}
-  .bubble{font-size:.82rem;line-height:1.45;padding:.72rem .9rem;border-radius:18px;max-width:88%}
+  .ps-body{padding:.7rem .8rem .45rem;display:flex;flex-direction:column;gap:.42rem;flex:1;overflow:hidden}
+  .bubble{font-size:.74rem;line-height:1.38;padding:.5rem .72rem;border-radius:15px;max-width:88%}
   .bubble.in{background:var(--blush);color:var(--ink);border-bottom-left-radius:5px}
   .bubble.out{background:var(--rose);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
-  .bubble .t{display:block;font-size:.65rem;opacity:.7;margin-top:.3rem;letter-spacing:.03em}
+  .bubble .t{display:block;font-size:.62rem;opacity:.7;margin-top:.26rem;letter-spacing:.03em}
+  .ps-link{color:var(--rose-deep);text-decoration:underline;font-weight:600;word-break:break-all}
+  /* iMessage-style compose bar */
+  .ps-bar{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;border-top:1px solid var(--blush-deep);background:rgba(255,255,255,.7)}
+  .ps-input{flex:1;border:1px solid var(--blush-deep);border-radius:999px;padding:.4rem .8rem;font-size:.72rem;color:var(--ink-soft);background:#fff}
+  .ps-send{width:26px;height:26px;border-radius:50%;background:var(--rose);display:grid;place-items:center;flex:none}
   .confirm{background:#fff;border:1px solid var(--line);border-radius:16px;padding:.75rem .95rem;display:flex;align-items:center;gap:.7rem;box-shadow:var(--shadow-sm)}
   .confirm .check{width:30px;height:30px;border-radius:50%;background:var(--rose);display:grid;place-items:center;flex:none}
   .confirm b{font-size:.84rem}
@@ -111,6 +116,7 @@
   .ps-body>*:nth-child(3){animation-delay:1.6s}
   .ps-body>*:nth-child(4){animation-delay:2.15s}
   .ps-body>*:nth-child(5){animation-delay:2.8s}
+  .ps-body>*:nth-child(6){animation-delay:3.4s}
   @media (prefers-reduced-motion:reduce){.ps-body>*{opacity:1;animation:none}}
 
   /* SECTION SHELL */
@@ -330,7 +336,7 @@
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand"><span class="dot"></span>Foglalj Okosan</a>
+    <a href="#" class="brand"><span class="dot"></span>Foglalás Okosan</a>
     <a href="#kapcsolat" class="btn btn-primary nav-demo">Kérek egy bemutatót</a>
   </div>
 </header>
@@ -340,37 +346,42 @@
   <div class="wrap hero-grid">
     <div class="hero-copy reveal">
       <span class="hero-badge"><span class="live"></span>Ingyenes élő bemutató · 15 perc</span>
-      <span class="eyebrow">Kulcsrakész foglalási rendszer szalonoknak</span>
-      <h1>Több foglalás, kevesebb üres szék — <em>egyetlen ujjmozdulat nélkül.</em></h1>
-      <p class="lead">Beállítjuk és üzemeltetjük helyetted a teljes rendszert. Neked nem kell semmihez értened — csak dolgoznod.</p>
+      <span class="eyebrow">Kulcsrakész foglalási rendszer magánrendelőknek</span>
+      <h1>Több foglalt időpont, kevesebb meg nem jelenő páciens — <em>kulcsrakész rendszerrel.</em></h1>
+      <p class="lead">A teljes online időpontfoglaló rendszert mi építjük fel és üzemeltetjük — az online foglalástól az emlékeztető SMS-ekig. Önnek csak a naptárát kell néznie.</p>
       <div class="hero-actions">
         <a href="#kapcsolat" class="btn btn-primary">Kérek egy bemutatót →</a>
         <a href="#mukodes" class="btn btn-ghost">Hogyan működik</a>
       </div>
       <ul class="hero-trust">
-        <li>Nulla technikai tudás kell hozzá</li>
-        <li>Emlékeztető 24 és 2 órával előtte</li>
-        <li>Automatikus Google-értékelés kérés</li>
+        <li>Nincs technikai teendője — mi állítjuk be és üzemeltetjük</li>
+        <li>Emlékeztető SMS 24 és 2 órával az időpont előtt</li>
+        <li>GDPR-konform, biztonságos adatkezelés</li>
       </ul>
     </div>
     <div class="phone-stage reveal">
       <div class="phone">
         <div class="phone-screen">
           <div class="ps-top">
-            <div class="salon">Aura Szalon</div>
-            <div class="small">+36 70 555 0142</div>
+            <div class="salon">Az Ön Rendelője</div>
+            <div class="small">Recepció</div>
           </div>
           <div class="ps-body">
-            <div class="bubble in">Szia Anna! 💗 Emlékeztetünk: holnap <b>14:00</b>-kor várunk hajvágásra.<span class="t">Tegnap 14:00</span></div>
-            <div class="bubble in">Ha közbejött valami, itt módosíthatod az időpontod.<span class="t">Tegnap 14:00</span></div>
-            <div class="bubble out">Köszi, ott leszek! 🙌<span class="t">Tegnap 14:06</span></div>
+            <div class="bubble in">Kedves Kovács Anna! Emlékeztetjük: holnap <b>14:00</b>-kor várjuk gyógytornára.<span class="t">Tegnap 14:00</span></div>
+            <div class="bubble in">Ha közbejött valami, itt módosíthatja: <span class="ps-link">foglalasokosan.hu/idopont</span><span class="t">Tegnap 14:00</span></div>
+            <div class="bubble out">Köszönöm, ott leszek!<span class="t">Tegnap 14:06</span></div>
             <div class="confirm">
               <span class="check">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
               </span>
-              <div><b>Foglalás megerősítve</b><small>Egy üres székkel kevesebb</small></div>
+              <div><b>Foglalás megerősítve</b><small>Eggyel kevesebb kihagyott időpont</small></div>
             </div>
-            <div class="bubble in">Köszönjük a látogatást, Anna! 🌟 Ha elégedett voltál, egy pár szavas <b>Google-értékelés</b> sokat jelentene.<span class="t">Ma 16:30</span></div>
+            <div class="bubble in">Kovács Anna, ma 14:00-kor várjuk — már csak 2 óra.<span class="t">Ma 12:00</span></div>
+            <div class="bubble in">Köszönjük, hogy nálunk járt, Kovács Anna! A következő, kontroll időpontját itt foglalhatja le: <span class="ps-link">foglalasokosan.hu/idopont</span><span class="t">Ma 16:30</span></div>
+          </div>
+          <div class="ps-bar">
+            <div class="ps-input">Üzenet…</div>
+            <span class="ps-send"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
           </div>
         </div>
       </div>
@@ -378,36 +389,29 @@
   </div>
 </section>
 
-<!-- NICHE MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Fodrászat</span><span class="marquee-item">Kozmetika</span><span class="marquee-item">Körömszalon</span><span class="marquee-item">Masszázs</span><span class="marquee-item">Barbershop</span><span class="marquee-item">Kutyakozmetika</span><span class="marquee-item">Sminktetoválás</span><span class="marquee-item">Szempilla</span><span class="marquee-item">Esztétikai klinika</span><span class="marquee-item">Fodrászat</span><span class="marquee-item">Kozmetika</span><span class="marquee-item">Körömszalon</span><span class="marquee-item">Masszázs</span><span class="marquee-item">Barbershop</span><span class="marquee-item">Kutyakozmetika</span><span class="marquee-item">Sminktetoválás</span><span class="marquee-item">Szempilla</span><span class="marquee-item">Esztétikai klinika</span>
-  </div>
-</div>
-
 <!-- PROBLEM -->
 <section class="problems" id="problema">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">A három dolog, ami csendben viszi a pénzed</span>
-      <h2>Nem a tudásoddal van baj. A rendszerrel.</h2>
-      <p>Jó vagy a szakmádban. De a foglalás körüli káosz minden hónapban valódi bevételt vesz el — anélkül, hogy észrevennéd.</p>
+      <span class="eyebrow">Három rejtett bevételkiesés</span>
+      <h2>A gond nem a szakmai munka. A foglalás körüli folyamat.</h2>
+      <p>A gyógyítással nincs baj. Az időpontok kézi intézése viszont minden hónapban mérhető bevételt és rendelési időt visz el — jórészt észrevétlenül.</p>
     </div>
     <div class="prob-grid">
       <div class="prob-card reveal">
         <span class="num">i.</span>
-        <h3>Az üres székek</h3>
-        <p>A meg nem jelenő vendég tiszta veszteség. Egy lemondott időpont, amit már nem tudsz feltölteni — és ez hétről hétre ismétlődik.</p>
+        <h3>A meg nem jelenő páciensek</h3>
+        <p>Minden meg nem jelenő páciens egy kihagyott időpont a szűkös, magas értékű rendelési időből — amit már nem lehet feltölteni. Emlékeztető nélkül ez hétről hétre ismétlődik.</p>
       </div>
       <div class="prob-card reveal">
         <span class="num">ii.</span>
-        <h3>A kézzel intézett foglalás</h3>
-        <p>Telefon, Messenger, Instagram DM. Munka közben félbeszakítva, fejben tartott időpontok, néha dupla foglalás. Idő- és idegrabló.</p>
+        <h3>A kézi időpont-egyeztetés</h3>
+        <p>Telefonhívások, emailek, visszahívások — mind a rendelési időből vesznek el. A kézzel vezetett időpontokból könnyen lesz dupla foglalás vagy elveszett páciens.</p>
       </div>
       <div class="prob-card reveal">
         <span class="num">iii.</span>
-        <h3>A hiányzó értékelések</h3>
-        <p>Aki ma szalont keres, a Google-értékeléseket nézi. Kevés vélemény = kevesebb új vendég — hiába vagy valójában a legjobb a környéken.</p>
+        <h3>A széttöredezett foglalás</h3>
+        <p>Az időpontkérések több csatornán érkeznek — telefonon, emailben, Messengeren. Az érzékeny egészségügyi adatok GDPR-konform kezelése pedig külön adminisztrációs terhet jelent.</p>
       </div>
     </div>
   </div>
@@ -418,8 +422,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">A megoldás — három pillér</span>
-      <h2>Egy rendszer, ami helyetted dolgozik.</h2>
-      <p>Nem egy újabb app, amit neked kell megtanulnod. Egy kész rendszer, amit mi építünk fel és üzemeltetünk — te csak az eredményt látod.</p>
+      <h2>Egy rendszer, ami Ön helyett dolgozik.</h2>
+      <p>Nem egy újabb szoftver, amit Önnek kell megtanulnia. Egy kész rendszer, amit mi építünk fel és üzemeltetünk — Ön csak az eredményt látja.</p>
     </div>
     <div class="pillars-grid">
       <div class="pillar reveal">
@@ -427,24 +431,24 @@
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><circle cx="12" cy="15" r="2.2" fill="currentColor" stroke="none"/></svg>
         </span>
         <h3>Online időpontfoglalás</h3>
-        <p>Saját foglalási oldalad, ahol a vendég pár kattintással foglal — bármikor, akár éjfélkor is. Naptárszinkron, így soha többé dupla foglalás.</p>
-        <span class="tag">→ Nincs több félbeszakított munka</span>
+        <p>Saját foglalási oldal, ahol a páciens pár kattintással maga foglal — 0-24, rendelési időn kívül is. Naptárszinkron, így soha többé dupla foglalás.</p>
+        <span class="tag">→ Kevesebb telefonos és emailes egyeztetés</span>
       </div>
       <div class="pillar reveal">
         <span class="ic">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
         </span>
         <h3>Emlékeztető SMS-ek</h3>
-        <p>Automatikus emlékeztető 24 órával és 2 órával az időpont előtt. A vendég nem felejt el jönni, te pedig nem nézel üres székre.</p>
-        <span class="tag">→ Drasztikusan kevesebb meg nem jelenő</span>
+        <p>Automatikus emlékeztető 24 órával és 2 órával az időpont előtt. A páciens nem felejti el az időpontot, a lemondott idősáv pedig időben felszabadul.</p>
+        <span class="tag">→ Jelentősen kevesebb meg nem jelenő páciens</span>
       </div>
       <div class="pillar reveal">
         <span class="ic">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.9 6.3 6.6.8-4.9 4.6 1.3 6.7L12 18l-5.9 2.4 1.3-6.7L2.5 9.1l6.6-.8z"/></svg>
         </span>
-        <h3>Automatikus Google-értékelés</h3>
-        <p>A látogatás után a rendszer magától küld egy kedves SMS-t a Google-értékelés oldalra. Több vélemény, jobb helyezés, több új vendég.</p>
-        <span class="tag">→ A jó híred magától épül</span>
+        <h3>GDPR-konform, kézi munka nélkül</h3>
+        <p>A páciensadatokat EU-s adatkezeléssel, adatfeldolgozói szerződéssel, az érzékeny adatokra vonatkozó szabályok szerint kezeljük. A rendszert mi állítjuk be és üzemeltetjük.</p>
+        <span class="tag">→ Biztonságos adatkezelés, nulla technikai teendő</span>
       </div>
     </div>
   </div>
@@ -462,55 +466,64 @@
         <span class="n">01</span>
         <div class="bar"></div>
         <h3>Beszélgetünk</h3>
-        <p>Megnézzük, hogyan dolgozol most, és mire van szükséged. 30 perc, kötelezettség nélkül.</p>
+        <p>Megnézzük, hogyan működik most a rendelő, és mire van szükség. 15 perc, kötelezettség nélkül.</p>
       </div>
       <div class="step reveal">
         <span class="n">02</span>
         <div class="bar"></div>
         <h3>Beállítjuk</h3>
-        <p>Mi építjük fel az egészet: foglalási oldal, SMS-ek, értékeléskérés. Neked nem kell semmit csinálnod.</p>
+        <p>Mi építjük fel az egészet: foglalási oldal, emlékeztető SMS-ek, naptárszinkron. Önnek nincs technikai teendője.</p>
       </div>
       <div class="step reveal">
         <span class="n">03</span>
         <div class="bar"></div>
-        <h3>Te csak dolgozol</h3>
-        <p>A vendégek foglalnak, kapják az emlékeztetőt, jönnek. Te a szakmáddal foglalkozol.</p>
+        <h3>Ön a pácienseire figyel</h3>
+        <p>A páciensek maguktól foglalnak, megkapják az emlékeztetőt, és megjelennek. Ön a gyógyításra koncentrál.</p>
       </div>
       <div class="step reveal">
         <span class="n">04</span>
         <div class="bar"></div>
         <h3>A rendszer fut magától</h3>
-        <p>Mi figyeljük, karbantartjuk, frissítjük. Neked semmi dolgod vele — csak az eredménnyel.</p>
+        <p>Mi figyeljük, karbantartjuk, frissítjük. Önnek semmi dolga vele — csak az eredménnyel.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
-<section id="eredmenyek">
+<!-- CALENDAR -->
+<section id="naptar">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">Szalonok, akik már nem a telefont nyomkodják</span>
-      <h2>Amit a tulajdonosok mondanak.</h2>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Az Ön dolga ennyi</span>
+      <h2>Önnek csak a naptárát kell néznie.</h2>
+      <p>Az egész rendszer a megszokott naptárába fut be. Nem kell új szoftvert tanulnia, nem kell sehová belépnie — minden ott van, ahol amúgy is nézi.</p>
     </div>
-    <div class="trust-grid">
-      <div class="quote reveal">
-        <span class="stars-row">★★★★★</span>
-        <p>„Helye a te valódi visszajelzésednek — cseréld le erre a szövegre."</p>
-        <div class="who"><span class="av">—</span><div><b>Szalon tulajdonos</b><span>Város · szépségszalon</span></div></div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="ic">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        </span>
+        <h3>Az új foglalás magától megjelenik</h3>
+        <p>Amikor egy páciens foglal, az időpont azonnal bekerül a naptárába — a páciens nevével és telefonszámával együtt. Önnek nincs vele dolga.</p>
+        <span class="tag">→ Nincs külön app, nincs külön belépés</span>
       </div>
-      <div class="quote reveal">
-        <span class="stars-row">★★★★★</span>
-        <p>„Helye egy konkrét eredménynek — pl. hány meg nem jelenővel lett kevesebb."</p>
-        <div class="who"><span class="av">—</span><div><b>Fodrász</b><span>Város · fodrászat</span></div></div>
+      <div class="pillar reveal">
+        <span class="ic">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </span>
+        <h3>Módosít vagy lemond? A páciens azonnal tudja</h3>
+        <p>Ha a naptárból áthelyez vagy töröl egy időpontot, a páciens automatikusan kap róla SMS-t az új részletekkel — Önnek egy üzenetet sem kell megírnia.</p>
+        <span class="tag">→ Azonnali, automatikus értesítés</span>
       </div>
-      <div class="quote reveal">
-        <span class="stars-row">★★★★★</span>
-        <p>„Helye egy harmadik vendégvéleménynek — pl. mennyi időt spórol hetente."</p>
-        <div class="who"><span class="av">—</span><div><b>Kozmetikus</b><span>Város · kozmetika</span></div></div>
+      <div class="pillar reveal">
+        <span class="ic">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.8.4 1.6.7 2.3a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.7-1.3a2 2 0 0 1 2.1-.4c.7.3 1.5.6 2.3.7a2 2 0 0 1 1.7 2z"/></svg>
+        </span>
+        <h3>Egy kattintás, és felhívja</h3>
+        <p>A páciens telefonszáma ott van az időpont mellett a naptárban. Ha beszélnie kell vele, egyenesen onnan hívhatja — nem kell keresgélnie.</p>
+        <span class="tag">→ Minden infó egy helyen</span>
       </div>
     </div>
-    <p class="placeholder-note">Helykitöltő idézetek — cseréld le őket valódi vendégvéleményekre, amint van az első.</p>
   </div>
 </section>
 
@@ -519,73 +532,33 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Árazás</span>
-      <h2>Egy csomag. Átlátható ár.</h2>
-      <p>Nincs többféle bonyolult opció és nincs rejtett költség. Egyszeri beállítás, utána fix havidíj — minden benne van.</p>
+      <h2>Egyedi ajánlat, átlátható feltételekkel.</h2>
+      <p>Minden praxis más — más szakterület, más páciensforgalom, más igények. Ezért nem katalógusárat adunk, hanem a rendelő méretéhez és igényeihez szabott ajánlatot, a 15 perces bemutató után.</p>
     </div>
     <div class="price-wrap">
       <div class="price-card reveal">
         <span class="label">Teljes csomag · kulcsrakész</span>
         <div class="price-rows">
           <div class="price-row">
-            <span class="k">Egyszeri beállítás<small>A teljes rendszer felépítése</small></span>
-            <span class="v">99&nbsp;900&nbsp;Ft<small> bruttó</small></span>
-          </div>
-          <div class="price-row">
-            <span class="k">Havidíj<small>750 emlékeztető + értékelés SMS / hó</small></span>
-            <span class="v">9&nbsp;900&nbsp;Ft<small> / hó · bruttó</small></span>
+            <span class="k">Árazás<small>A rendelő méretéhez és igényeihez szabva</small></span>
+            <span class="v">Egyedi ajánlat</span>
           </div>
         </div>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Saját online foglalási oldal, naptárszinkronnal</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Emlékeztető SMS-ek (24 és 2 órával előtte)</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Automatikus Google-értékelés kérés</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> GDPR-konform, biztonságos adatkezelés</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Teljes beállítás és folyamatos üzemeltetés</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Magyar nyelvű támogatás, valódi emberrel</li>
         </ul>
-        <div class="overage">Túlhasználat: a havi 750 SMS felett <b>+9&nbsp;900&nbsp;Ft</b> (bruttó) minden további 750 SMS-ért. A legtöbb szalonnak a benne foglalt keret bőven elég.</div>
+        <div class="overage">A pontos ajánlatot a 15 perces bemutatón adjuk meg — <b>meglepetések és rejtett költségek nélkül</b>. Nincs hosszú szerződés, a szolgáltatás bármikor lemondható.</div>
         <a href="#kapcsolat" class="btn btn-rose" style="margin-top:1.6rem">Kérek egy bemutatót</a>
       </div>
       <div class="price-aside reveal">
         <h3>Miért éri meg?</h3>
-        <p>Egyetlen visszahozott meg nem jelenő vendég gyakran többet ér, mint a havidíj. A rendszer onnantól magát fizeti vissza — te közben végig a szakmáddal foglalkozol.</p>
-        <p>A 750 SMS havonta a legtöbb szalon teljes forgalmát lefedi. Ha többre van szükséged, az azt jelenti, hogy tele a naptárad — és akkor a pár ezer forint extra már nem kérdés.</p>
+        <p>Egy magánrendelőben minden kihagyott időpont magas értékű, pótolhatatlan rendelési idő. Már néhány visszahozott, meg nem jelenő páciens fedezi a rendszer díját — onnantól magát fizeti vissza.</p>
+        <p>Az ajánlatot a praxis méretéhez igazítjuk: egyszemélyes praxisra és többszakemberes rendelőre egyaránt van megoldásunk. A bemutatón pontos, meglepetések nélküli árajánlatot kap.</p>
         <p class="fine">Nincs hosszú szerződés. Nincs rejtett költség. Bármikor lemondható.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="gyik">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">GYIK</span>
-      <h2>Amit a legtöbben kérdeznek.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-q">Kell hozzá értenem a technikához?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Nem. Pontosan ezért „kulcsrakész": mi állítunk be mindent, és mi is üzemeltetjük. Neked elég a telefonod és a szakmád.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Mennyi idő alatt áll fel a rendszer?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Általában néhány nap. A bemutató beszélgetés után pár napon belül élesben működik a foglalás, az SMS-ek és az értékeléskérés.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Mi lesz a mostani vendégeimmel és naptárammal?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Nem kell mindent elölről kezdened. A rendszert a mostani működésedhez igazítjuk, a meglévő időpontjaid megmaradnak.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Nem zavarják az SMS-ek a vendégeket?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Épp ellenkezőleg. Egy kulturált emlékeztetőt és a látogatás után egy értékeléskérést kapnak — semmi spam. A legtöbb vendég kifejezetten hálás, hogy nem felejti el az időpontot.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Mi van az adatokkal? Megfelel a GDPR-nak?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Igen. EU-s adatkezeléssel dolgozunk, a vendégek adatait a hatályos adatvédelmi szabályok szerint kezeljük, és segítünk a szükséges hozzájárulások beállításában is.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Köt hosszú szerződéshez?<span class="pm">+</span></button>
-        <div class="faq-a"><p>Nem. Havi alapon működik, és bármikor lemondható. Azt szeretnénk, hogy az eredmény tartson bent — ne egy szerződés.</p></div>
       </div>
     </div>
   </div>
@@ -596,16 +569,16 @@
   <div class="wrap contact-grid">
     <div class="contact-left reveal">
       <span class="eyebrow">Kapcsolat</span>
-      <h2>Nézzük meg, mennyit hozhat a szalonodnak.</h2>
-      <p>Foglalj egy 30 perces bemutatót. Megmutatjuk, hogyan nézne ki nálad — kötelezettség nélkül.</p>
+      <h2>Nézzük meg, mennyit hozhat a rendelőjének.</h2>
+      <p>Foglaljon egy 15 perces bemutatót. Megmutatjuk, pontosan hogyan működne az Ön rendelőjében — kötelezettség nélkül.</p>
       <div class="contact-perks">
-        <div><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Konkrét javaslat a te szalonodra</div>
+        <div><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Konkrét javaslat az Ön rendelőjére</div>
         <div><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Pontos árajánlat, meglepetések nélkül</div>
-        <div><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Semmi kötelezettség, semmi nyomulás</div>
+        <div><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Semmi kötelezettség, semmi értékesítési nyomás</div>
       </div>
     </div>
     <div class="cal-card reveal">
-      <div class="cal-card-head"><span class="live"></span>Válassz időpontot<span class="free">Ingyenes</span></div>
+      <div class="cal-card-head"><span class="live"></span>Válasszon időpontot<span class="free">Ingyenes</span></div>
       <div id="cal-demo" style="min-height:560px;width:100%"></div>
     </div>
     <script>
@@ -633,13 +606,49 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="gyik">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">GYIK</span>
+      <h2>Amit a legtöbben kérdeznek.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">Kell hozzá értenem a technikához?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Nem. Pontosan ezért „kulcsrakész": mi állítunk be mindent, és mi is üzemeltetjük. Önnek nincs semmilyen technikai teendője — a rendszer a háttérben, magától működik.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Mennyi idő alatt áll fel a rendszer?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Általában néhány nap. A bemutató beszélgetés után pár napon belül élesben működik az online foglalás és az emlékeztető SMS-küldés — a rendelés megszakítása nélkül.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Mi lesz a jelenlegi pácienseimmel és naptárammal?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Nem kell semmit elölről kezdenie. A rendszert a rendelő jelenlegi működéséhez igazítjuk, a meglévő időpontok és a megszokott naptár megmaradnak.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Nem zavarják az SMS-ek a pácienseket?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Épp ellenkezőleg. A páciens egy udvarias emlékeztetőt kap 24, majd 2 órával az időpont előtt — semmi mást. A legtöbben kifejezetten értékelik: kevesebb az elfelejtett vizsgálat, és ha mégis közbejön valami, az időpont időben felszabadul egy másik páciensnek.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Hogyan kezelik a páciensek adatait? Megfelel a GDPR-nak?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Igen — egészségügyi környezetben ez alapkövetelmény, és így is kezeljük. Az adatok EU-s adatkezelésben, a GDPR előírásai szerint tárolódnak, a rendelővel adatfeldolgozói szerződést kötünk, és munkatársainkat titoktartási kötelezettség köti. A rendszer kizárólag az időpontkezeléshez szükséges adatokat (név, telefonszám, időpont) tárolja — egészségügyi dokumentációt nem. A szükséges páciens-hozzájárulások beállításában is segítünk.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Köt hosszú szerződéshez?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Nem. Havi alapon működik, és bármikor lemondható. Azt szeretnénk, hogy az eredmény tartsa Önt nálunk — ne egy szerződés.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <a href="#" class="brand"><span class="dot"></span>Foglalj Okosan</a>
-        <p>Kulcsrakész foglalási automatizálás magyar szépségszalonoknak, fodrászatoknak, kozmetikáknak és klinikáknak.</p>
+        <a href="#" class="brand"><span class="dot"></span>Foglalás Okosan</a>
+        <p>Kulcsrakész időpontfoglalási automatizálás magyar magánrendelőknek — fizioterápia, gyógytorna, pszichológia, dietetika, magán szakorvosi praxisok és rehabilitáció.</p>
       </div>
       <div class="foot-links">
         <div class="col">
@@ -651,7 +660,7 @@
         </div>
         <div class="col">
           <b>Kapcsolat</b>
-          <a href="mailto:hello@foglaljokosan.hu">hello@foglaljokosan.hu</a>
+          <a href="mailto:hello@foglalasokosan.hu">hello@foglalasokosan.hu</a>
           <a href="#kapcsolat">Bemutatót kérek</a>
           <a href="#gyik">GYIK</a>
         </div>
@@ -662,8 +671,8 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> Foglalj Okosan · foglaljokosan.hu</span>
-      <span>Készült szalontulajdonosoknak, akik inkább dolgoznának.</span>
+      <span>© <span id="year"></span> Foglalás Okosan · foglalasokosan.hu</span>
+      <span>Kevesebb adminisztráció, több foglalt időpont.</span>
     </div>
   </div>
 </footer>
