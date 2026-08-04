@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Köszönjük! · Foglalás Okosan</title>
+<meta name="description" content="Köszönjük a jelentkezését — hamarosan keressük. Addig is foglaljon időpontot a bemutatóra.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#FBF6F2; --blush:#F3E5E2; --blush-deep:#EBD4D2; --ink:#271620;
+  --ink-soft:#5A4750; --rose:#BB5F79; --rose-deep:#9E4862; --champagne:#B08A4F;
+  --line:#E9DBD6; --white:#FFFFFF; --shadow:0 24px 60px -28px rgba(39,22,32,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--porcelain);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;width:100%}
+nav{background:rgba(251,246,242,.86);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:Fraunces,serif;font-size:1.32rem;font-weight:600;text-decoration:none;color:var(--ink)}
+.logo b{color:var(--rose-deep)}
+main{flex:1;display:grid;place-items:center;padding:56px 0}
+.card{background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);max-width:720px;margin:0 auto;padding:52px 44px;text-align:center}
+.check{width:64px;height:64px;border-radius:50%;background:var(--blush);display:grid;place-items:center;margin:0 auto 22px;color:var(--rose-deep)}
+.card h1{font-size:clamp(1.9rem,4.5vw,2.5rem);margin-bottom:14px}
+.card p.lead{font-size:1.12rem;color:var(--ink-soft);max-width:42ch;margin:0 auto 8px}
+.card p.next{font-size:1.02rem;color:var(--ink);margin:0 auto 26px;max-width:46ch}
+.card p.next b{color:var(--rose-deep)}
+.cal-box{background:var(--white);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:0 auto 6px;text-align:left}
+.hint{font-size:.9rem;color:var(--ink-soft);margin-top:14px}
+.upsell{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink-soft);max-width:46ch;margin-left:auto;margin-right:auto}
+.upsell b{color:var(--ink)}
+footer{padding:32px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.9rem}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+footer a{color:var(--rose-deep);text-decoration:none}
+@media(max-width:560px){.card{padding:40px 20px}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '793641503810920');
+fbq('track', 'PageView');
+fbq('track', 'Lead', {content_name: 'Koszonjuk oldal'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=793641503810920&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="/">Foglalás <b>Okosan</b></a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="card">
+      <div class="check">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1>Köszönjük, megkaptuk!</h1>
+      <p class="lead">Jelentkezése megérkezett hozzánk.</p>
+      <p class="next">Munkaidőben jellemzően <b>10 percen belül hívom</b> a megadott telefonszámon. Ha nem szeretne a hívásra várni, válasszon időpontot itt, most azonnal — pontosan azzal a rendszerrel, amit az Ön vállalkozásának is beállítunk:</p>
+      <div class="cal-box">
+        <iframe src="https://app.foglalasokosan.hu/foglalas-okosan/foglalas?embed=1&bare=1"
+                title="Időpontfoglalás" loading="lazy"
+                style="width:100%;min-height:560px;border:0;display:block"></iframe>
+      </div>
+      <p class="hint">2 perc, és a visszaigazolást azonnal megkapja emailben — ahogy majd az Ön vendégei is.</p>
+      <p class="upsell">Tudta? A foglalórendszer mellé <b>AI recepcióst</b> is kérhet, aki a nem fogadott hívásokat is felveszi, és időponttá alakítja. A bemutatón szívesen megmutatjuk ezt is.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+// UTM pass-through a beágyazott naptárba (a sessionStorage-ból, ha a főoldalról jött)
+(function(){
+  var utm = new URLSearchParams(location.search).get('utm_content');
+  try {
+    if (utm) sessionStorage.setItem('fo_utm', utm);
+    else utm = sessionStorage.getItem('fo_utm');
+  } catch(e){}
+  if (!utm) return;
+  document.querySelectorAll('iframe[src*="app.foglalasokosan.hu"]').forEach(function(f){
+    try { var u = new URL(f.src); u.searchParams.set('utm_content', utm); f.src = u.toString(); } catch(e){}
+  });
+})();
+</script>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="logo" style="font-size:1.05rem">Foglalás <b>Okosan</b></div>
+    <div><a href="/adatvedelem">Adatvédelmi tájékoztató</a></div>
+    <div>© 2026 Foglalás Okosan</div>
+  </div>
+</footer>
+</body>
+</html>

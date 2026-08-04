@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foglalás Okosan · Kulcsrakész online időpontfoglaló rendszer magánrendelőknek és szalonoknak</title>
+<meta name="description" content="Kész online foglalórendszer magánrendelőknek és szépségszalonoknak: az ügyfél maga foglal, automatikus visszaigazoló és emlékeztető emailt kap. Kevesebb elmaradás, kevesebb telefonálgatás. A beállítást a teljes folyamat során mi végezzük el.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foglalasokosan.hu/">
+<meta property="og:title" content="Foglalás Okosan · Kulcsrakész online időpontfoglaló rendszer">
+<meta property="og:description" content="Kész online foglalórendszer: az ügyfél maga foglal, automatikus visszaigazolást és emlékeztetőt kap emailben. A beállítást mi végezzük el Ön helyett.">
+<meta property="og:locale" content="hu_HU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#FBF6F2; --blush:#F3E5E2; --blush-deep:#EBD4D2; --ink:#271620;
+  --ink-soft:#5A4750; --rose:#BB5F79; --rose-deep:#9E4862; --champagne:#B08A4F;
+  --line:#E9DBD6; --white:#FFFFFF; --shadow:0 24px 60px -28px rgba(39,22,32,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--porcelain);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-deep)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:1.02rem;padding:15px 28px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--rose-deep);color:#fff;box-shadow:0 12px 30px -12px rgba(158,72,98,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px -12px rgba(158,72,98,.7)}
+.btn-ghost{color:var(--ink);border:1px solid var(--line);background:var(--white)}
+.btn-ghost:hover{border-color:var(--rose)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(251,246,242,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:Fraunces,serif;font-size:1.32rem;font-weight:600}
+.logo b{color:var(--rose-deep)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-link{font-size:.94rem;color:var(--ink-soft);text-decoration:none}
+.nav-link:hover{color:var(--rose-deep)}
+.nav-cta{font-size:.92rem;padding:10px 20px}
+@media(max-width:560px){.nav-link{display:none}}
+
+/* hero */
+.hero{padding:74px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5vw,3.5rem);margin:16px 0 20px}
+.hero p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:33ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:18px;font-size:.9rem;color:var(--ink-soft)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero p.lead{max-width:none}}
+
+/* email mockup */
+.mock{background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.mock-top{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--blush)}
+.dot{width:11px;height:11px;border-radius:50%}
+.mock-top .small{margin-left:auto;font-size:.8rem;color:var(--ink-soft)}
+.mail{padding:20px 22px}
+.mail-row{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+.mail-row:last-child{border-bottom:none}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--blush-deep);flex-shrink:0;display:grid;place-items:center;font-family:Fraunces,serif;color:var(--rose-deep);font-weight:600}
+.mail-txt b{display:block;font-size:.95rem}
+.mail-txt span{font-size:.9rem;color:var(--ink-soft)}
+.mail-time{margin-left:auto;font-size:.78rem;color:var(--champagne);white-space:nowrap}
+
+/* sections */
+section{padding:66px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.5rem);margin:12px 0 14px}
+.sec-head p{font-size:1.1rem;color:var(--ink-soft)}
+.band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:820px){.cards{grid-template-columns:1fr}}
+.card{background:var(--porcelain);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+.band .card{background:var(--white)}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--blush);color:var(--rose-deep);display:grid;place-items:center;margin-bottom:16px}
+.card h3{font-size:1.28rem;margin-bottom:9px}
+.card p{color:var(--ink-soft);font-size:.98rem}
+
+/* pain cards */
+.pain .card{background:var(--white)}
+.pain .card h3{font-size:1.16rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding:26px 24px;border-radius:18px;background:var(--white);border:1px solid var(--line)}
+.step .n{font-family:Fraunces,serif;font-size:1.5rem;color:var(--rose);font-weight:600}
+.step h3{font-size:1.18rem;margin:8px 0 6px}
+.step p{color:var(--ink-soft);font-size:.96rem}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:760px}
+@media(max-width:700px){.price-grid{grid-template-columns:1fr}}
+.price-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px 28px}
+.price-card.hl{border-color:var(--rose);box-shadow:var(--shadow)}
+.price-card .tag{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep)}
+.price-card .amount{font-family:Fraunces,serif;font-size:2.1rem;margin:10px 0 4px}
+.price-card .amount span{font-size:1rem;font-family:Inter,sans-serif;color:var(--ink-soft)}
+.price-card ul{list-style:none;margin-top:16px}
+.price-card li{padding:7px 0;color:var(--ink-soft);font-size:.96rem;display:flex;gap:10px;align-items:flex-start}
+.price-card li::before{content:"✓";color:var(--rose-deep);font-weight:600}
+.price-note{margin-top:20px;font-size:.98rem;color:var(--ink-soft);max-width:56ch}
+.price-note b{color:var(--ink)}
+
+/* faq */
+.faq{max-width:760px}
+.faq details{background:var(--white);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;padding:18px 22px;font-weight:600;font-size:1.02rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:Fraunces,serif;font-size:1.3rem;color:var(--rose-deep);flex-shrink:0}
+.faq details[open] summary::after{content:"–"}
+.faq .faq-body{padding:0 22px 18px;color:var(--ink-soft);font-size:.98rem}
+
+/* booking */
+.book{text-align:center}
+.book h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:14px}
+.book p{font-size:1.14rem;color:var(--ink-soft);max-width:46ch;margin:0 auto 30px}
+.cal-box{background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;min-height:560px;text-align:left}
+
+footer{padding:44px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.92rem}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer a{color:var(--rose-deep);text-decoration:none}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '793641503810920');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=793641503810920&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="logo">Foglalás <b>Okosan</b></div>
+    <div class="nav-right">
+      <a href="#arak" class="nav-link">Árak</a>
+      <a href="#gyik" class="nav-link">Gyakori kérdések</a>
+      <a href="#bemutato" class="btn btn-primary nav-cta">Bemutatót kérek</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Magánrendelőknek és szalonoknak</span>
+      <h1>Több foglalt időpont, kevesebb elmaradás, felesleges teendők nélkül.</h1>
+      <p class="lead">Kész online foglalórendszert állítunk be Önnek. Az ügyfél maga foglal időpontot, és automatikus visszaigazolást, majd emlékeztetőt kap emailben. A beállítást az elejétől a végéig mi végezzük el Ön helyett.</p>
+      <div class="hero-cta">
+        <a href="#bemutato" class="btn btn-primary">Ingyenes 15 perces bemutató</a>
+        <a href="#megoldas" class="btn btn-ghost">Hogyan működik?</a>
+      </div>
+      <p class="hero-note">Élesben 72 órán belül · 30 napos pénzvisszafizetési garancia</p>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="mock-top">
+        <span class="dot" style="background:#E68A8A"></span><span class="dot" style="background:#E9C46A"></span><span class="dot" style="background:#8AC79A"></span>
+        <span class="small">Beérkező üzenetek</span>
+      </div>
+      <div class="mail">
+        <div class="mail-row">
+          <div class="avatar">R</div>
+          <div class="mail-txt"><b>Visszaigazolás</b><span>Foglalása megerősítve, időpontja: szerda 14:00.</span></div>
+          <div class="mail-time">foglaláskor</div>
+        </div>
+        <div class="mail-row">
+          <div class="avatar">R</div>
+          <div class="mail-txt"><b>Emlékeztető</b><span>Holnap 14:00 órára várjuk Önt.</span></div>
+          <div class="mail-time">24 órával előtte</div>
+        </div>
+        <div class="mail-row">
+          <div class="avatar">R</div>
+          <div class="mail-txt"><b>Emlékeztető</b><span>Ma 14:00, hamarosan találkozunk.</span></div>
+          <div class="mail-time">2 órával előtte</div>
+        </div>
+        <div class="mail-row">
+          <div class="avatar">R</div>
+          <div class="mail-txt"><b>Köszönjük a látogatását</b><span>Ha elégedett volt, egy rövid értékelés sokat jelent.</span></div>
+          <div class="mail-time">a látogatás után</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pain" id="ismeros">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ismerős?</span>
+      <h2>A foglalás ma valószínűleg így néz ki Önnél.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.78.59 2.63a2 2 0 0 1-.45 2.11L8 9.72a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.27 1.73.47 2.63.59A2 2 0 0 1 22 16.92z"/><line x1="17" y1="3" x2="22" y2="8"/><line x1="22" y1="3" x2="17" y2="8"/></svg></span>
+        <h3>Munka közben cseng a telefon</h3>
+        <p>Kezelés közben nem tudja felvenni — a hívó pedig ritkán próbálkozik kétszer. Amit Ön nem vesz fel, azt máshol foglalják le.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></span>
+        <h3>Este is jönnek az üzenetek</h3>
+        <p>„Van szabad időpont?” „Át tudnánk tenni?” Napi 1–2 óra egyeztetés — olyan adminisztráció, amiért senki sem fizet Önnek.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><line x1="9" y1="14" x2="15" y2="18"/><line x1="15" y1="14" x2="9" y2="18"/></svg></span>
+        <h3>Az üres szék is pénzbe kerül</h3>
+        <p>A vendég, aki elfelejti az időpontot, a legdrágább vendég: a hely kiesett, a bérleti díj és a bér viszont megy tovább.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TODO: VÉLEMÉNYEK SZEKCIÓ — akkor kapcsold be, ha van legalább 1-2 VALÓDI ügyfél-vélemény.
+     Kamu véleményt SOHA ne tegyél ki: hirdetésnél ez visszaüt (és a Meta is bünteti).
+<section class="band" id="velemenyek">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ügyfeleink mondták</span>
+      <h2>Már használják — így vált be náluk.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <p>„IDE JÖN AZ IDÉZET — pl. mennyi időt spórol, mennyivel kevesebb a lemondás.”</p>
+        <p style="margin-top:14px"><b>NÉV</b> · VÁLLALKOZÁS NEVE, VÁROS</p>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<section class="band" id="megoldas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A megoldás</span>
+      <h2>Ön a munkájára figyel, a foglalást bízza ránk.</h2>
+      <p>Nem kell új programot tanulnia, és nincs vele technikai teendője. A rendszert mi építjük fel és tartjuk karban. Ön az ügyfeleivel foglalkozik, a foglalás pedig a háttérben, automatikusan zajlik.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span>
+        <h3>Online foglalási oldal</h3>
+        <p>A vendég néhány kattintással, a nap bármely szakában időpontot foglal, felesleges telefonálgatás és többszöri egyeztetés nélkül.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <h3>Automatikus emailek</h3>
+        <p>Visszaigazolás foglaláskor, emlékeztető az időpont előtt és értékeléskérés a látogatás után. Kevesebb elmaradás, kézi teendők nélkül.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>Kulcsrakész és biztonságos</h3>
+        <p>Mi állítjuk be és üzemeltetjük, a GDPR előírásait betartva. Önnek és a kollégáinak semmilyen technikai teendője nincs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mukodes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hogyan működik</span>
+      <h2>Három lépés, a többit mi végezzük el.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Egyeztetünk</h3><p>Egy 15 perces online hívás, amelynek során áttekintjük, hogyan zajlik jelenleg a foglalás, és hol vannak benne az akadályok.</p></div>
+      <div class="step"><div class="n">2</div><h3>Beállítjuk</h3><p>72 órán belül felépítjük a rendelője vagy szalonja foglalási oldalát és az automatikus emaileket, az Ön arculatával.</p></div>
+      <div class="step"><div class="n">3</div><h3>Automatikusan működik</h3><p>Ön megadja a szabad időpontjait; az ügyfelek ezekbe foglalnak, és a foglalás egyből a naptárába kerül, telefonálgatás és kézi rögzítés nélkül. Önnek csak a naptárát kell kezelnie.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="arak">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Átlátható árak</span>
+      <h2>Nincs apró betű: egyszeri bevezetés és egy havidíj.</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="tag">Egyszeri bevezetés</span>
+        <div class="amount">100 000 Ft</div>
+        <ul>
+          <li>Élesben 72 órán belül</li>
+          <li>Saját foglalási oldal az Ön arculatával</li>
+          <li>Szolgáltatások, árak, nyitvatartás beállítása</li>
+          <li>Automatikus email-folyamatok beállítása</li>
+          <li>Betanítás — bár tanulnivaló szinte nincs</li>
+        </ul>
+      </div>
+      <div class="price-card hl">
+        <span class="tag">Üzemeltetés</span>
+        <div class="amount">10 000 Ft <span>/ hónap</span></div>
+        <ul>
+          <li>Folyamatos működtetés és karbantartás</li>
+          <li>Visszaigazolások és emlékeztetők</li>
+          <li>Módosítások, ha változik az árlista vagy a nyitvatartás</li>
+          <li>Segítség emailben, magyarul</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note"><b>Számoljunk:</b> ha havonta egyetlen elmaradó vendéggel kevesebb van, a rendszer már többet hozott, mint amennyibe kerül. A bemutatón az Ön számaival is végigszámoljuk.</p>
+    <p class="price-note" style="margin-top:10px;font-size:.9rem">30 napos garancia: ha az első hónapban úgy érzi, nem vált be, a bevezetési díjat visszaadjuk — kérdés nélkül.</p>
+  </div>
+</section>
+
+<section id="gyik">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gyakori kérdések</span>
+      <h2>Amit a legtöbben megkérdeznek.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Nem értek a technikához. Ez gond?</summary>
+        <div class="faq-body">Nem. A rendszert az elejétől a végéig mi állítjuk be és mi üzemeltetjük. Önnek egyetlen dolga lesz: megnézni a naptárát, ahogy eddig is. Ha bármi módosítás kell, azt is mi végezzük el.</div>
+      </details>
+      <details>
+        <summary>Mennyi idő a bevezetés?</summary>
+        <div class="faq-body">72 óra. Az egyeztetés után mi felépítjük az oldalt a szolgáltatásaival, áraival és nyitvatartásával, Ön pedig jóváhagyja, mielőtt élesbe megy.</div>
+      </details>
+      <details>
+        <summary>Mi van, ha mégsem válik be?</summary>
+        <div class="faq-body">Erre való a 30 napos garancia: ha az első hónapban úgy érzi, nem hozza, amit várt, a bevezetési díjat visszaadjuk, kérdés nélkül. Azért merjük vállalni, mert aki egyszer élesben használja, ritkán akarja visszaadni.</div>
+      </details>
+      <details>
+        <summary>Mi lesz a mostani naptárammal és a telefonos foglalással?</summary>
+        <div class="faq-body">Semmi sem szűnik meg. A telefon továbbra is működik — csak nem muszáj felvennie ahhoz, hogy foglalás szülessen. A telefonon egyeztetett időpontokat ugyanabba a naptárba rögzítheti, ahová az online foglalások érkeznek, így minden egy helyen lesz.</div>
+      </details>
+      <details>
+        <summary>Mi van, ha a vendégeim idősebbek, és nem szeretnek online intézkedni?</summary>
+        <div class="faq-body">Ők továbbra is hívhatják Önt — a rendszer nem elvesz egy csatornát, hanem hozzáad egyet. A tapasztalat szerint viszont a vendégek meglepően nagy része választja az online foglalást, amint lehetősége van rá, mert este, munka után is intézhető.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band book" id="bemutato">
+  <div class="wrap">
+    <span class="eyebrow">Foglaljon időpontot</span>
+    <h2>Nézzük meg 15 percben, hogyan működne az Ön rendelőjében vagy szalonjában.</h2>
+    <p>Kötöttség nélkül. Élőben bemutatjuk, és ha nem az Ön vállalkozásának való, azt nyíltan jelezzük.</p>
+    <div class="cal-box">
+      <iframe src="https://app.foglalasokosan.hu/foglalas-okosan/foglalas?embed=1&bare=1"
+              title="Időpontfoglalás" loading="lazy"
+              style="width:100%;min-height:620px;border:0;display:block"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="logo">Foglalás <b>Okosan</b></div>
+    <div>Kérdése van? <a href="mailto:hello@foglalasokosan.hu">hello@foglalasokosan.hu</a></div>
+    <div><a href="/adatvedelem">Adatvédelmi tájékoztató</a> · © 2026 Foglalás Okosan</div>
+  </div>
+  <!-- TODO: IMPRESSZUM — töltsd ki a valós cégadatokkal, majd vedd ki a kommentből.
+       Magyar vállalkozásnál elvárt (és bizalomépítő) a cégnév, székhely, adószám feltüntetése.
+  <div class="wrap" style="margin-top:18px;font-size:.85rem;color:var(--ink-soft)">
+    CÉGNÉV · Székhely: CÍM · Adószám: XXXXXXXX-X-XX
+  </div>
+  -->
+</footer>
+
+<!-- Meta Pixel események: InitiateCheckout a bemutató CTA-kon (a VALÓDI Lead csak a /koszonjuk oldalon
+     és a sikeres foglalásnál tüzel — így a hirdetés a tényleges jelentkezőkre optimalizál, nem a kattintókra),
+     ViewContent a foglaló szekción, Contact az emailen -->
+<script>
+// UTM pass-through: a hirdetés utm_content címkéjét betoljuk a foglaló iframe URL-jébe,
+// hogy a foglalórendszer eltárolhassa és az értesítő emailben megjelenjen a forrás-hirdetés.
+(function(){
+  var utm = new URLSearchParams(location.search).get('utm_content');
+  try {
+    if (utm) sessionStorage.setItem('fo_utm', utm);
+    else utm = sessionStorage.getItem('fo_utm');
+  } catch(e){}
+  if (!utm) return;
+  document.querySelectorAll('iframe[src*="app.foglalasokosan.hu"]').forEach(function(f){
+    try { var u = new URL(f.src); u.searchParams.set('utm_content', utm); f.src = u.toString(); } catch(e){}
+  });
+})();
+(function(){
+  if (typeof fbq !== 'function') return;
+  var ctaSent = false;
+  document.querySelectorAll('a[href="#bemutato"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (ctaSent) return;
+      ctaSent = true;
+      fbq('track', 'InitiateCheckout', {content_name: 'Bemutato CTA'});
+    });
+  });
+  var book = document.getElementById('bemutato');
+  if (book && 'IntersectionObserver' in window) {
+    var vcSent = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !vcSent) {
+          vcSent = true;
+          fbq('track', 'ViewContent', {content_name: 'Bemutato foglalo szekcio'});
+          io.disconnect();
+        }
+      });
+    }, {threshold: 0.4});
+    io.observe(book);
+  }
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      fbq('track', 'Contact');
+    });
+  });
+})();
+</script>
+</body>
+</html>
